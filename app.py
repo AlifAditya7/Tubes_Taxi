@@ -70,10 +70,10 @@ with st.sidebar:
     view = st.selectbox(
         "What\'s View Would You See?",
         key="view",
-        options=['Titik Jemput', 'Titik Jemput dgn Indeks Layanan', 'Terpadat di Hari Senin','Terpadat di Hari Senin Jam 6 Sampai Jam 9','Rute Terpadat Pada Jam Sibuk']
+        options=['titik penjemputan terbaik', 'titik penjemputan terbaik untuk perjalanan berdasarkan cara untuk memintal layanan taksi', 'Wilayah di kota ini yang menjadi tujuan paling umum di hari Senin','titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi','Jalan yang memiliki lalu lintas lebih padat pada jam sibuk']
     )
 
-if view == 'Titik Jemput':
+if view == 'titik penjemputan terbaik':
     tab1, tab2 = st.tabs(["Map Jemput Terbaik", "Rate Order Taksi"])
     with tab1:
         st.write('Wilayah kota mana yang merupakan titik penjemputan terbaik')
@@ -86,7 +86,7 @@ if view == 'Titik Jemput':
         q1_data = data.CALL_TYPE.value_counts(sort=False)
         st.bar_chart(q1_data)
 
-elif view == 'Titik Jemput dgn Indeks Layanan':
+elif view == 'titik penjemputan terbaik untuk perjalanan berdasarkan cara untuk memintal layanan taksi':
     st.write('Wilayah kota mana yang merupakan titik penjemputan terbaik untuk perjalanan berdasarkan cara untuk memintal layanan taksi')
     Q3_Map = folium.Map(location=[41.15,-8.62],zoom_start=14)
 
@@ -106,7 +106,7 @@ elif view == 'Titik Jemput dgn Indeks Layanan':
         st.color_picker('Red : LANGSUNG','#FF0000')
         st.color_picker('Purple : LAINNYA','#800080')
 
-elif view == 'Terpadat di Hari Senin':
+elif view == 'Wilayah di kota ini yang menjadi tujuan paling umum di hari Senin':
     st.write('Wilayah di kota ini yang menjadi tujuan paling umum di hari Senin')
     Q4_data = data[data.week_day == "Monday"]
     Q4_map = folium.Map(location=[41.15,-8.62], zoom_start=15)
@@ -114,7 +114,7 @@ elif view == 'Terpadat di Hari Senin':
         folium.CircleMarker(location=loc, radius=1, color="red",weight = 2).add_to(Q4_map)
     st_map = st_folium(Q4_map, width=700, height=450)
         
-elif view == 'Terpadat di Hari Senin Jam 6 Sampai Jam 9':
+elif view == 'titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi':
     st.write('Di mana titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi')
     Q5_map = folium.Map(location=[41.15,-8.62],zoom_start=14)
     put_start_loc = lambda loc : folium.CircleMarker(loc,color="red",radius=1,weight= 2).add_to(Q5_map)
@@ -129,7 +129,7 @@ elif view == 'Terpadat di Hari Senin Jam 6 Sampai Jam 9':
         st.color_picker('Red : Titik Awal','#FF0000')
         st.color_picker('Blue : Titik Akhir','#0000FF')
 
-elif view == 'Rute Terpadat Pada Jam Sibuk' :
+elif view == 'Jalan yang memiliki lalu lintas lebih padat pada jam sibuk' :
     tab1, tab2 = st.tabs(["Map Rute Terpadat", "Jam Sibuk Porto"])
     with tab1:
         st.write('Jalan yang memiliki lalu lintas lebih padat pada jam sibuk')
