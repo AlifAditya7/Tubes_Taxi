@@ -1,7 +1,6 @@
-pandas
-datetime
-folium
-request
-beautifulsoup4
-streamlit
-streamlit_folium
+pandas==1.5.2
+folium==0.14.0
+beautifulsoup4==4.11.2
+streamlit==1.17.0
+streamlit-folium==0.11.0
+lxml==4.9.2
