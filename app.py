@@ -70,10 +70,10 @@ with st.sidebar:
     view = st.selectbox(
         "What\'s View Would You See?",
         key="view",
-        options=['titik penjemputan terbaik', 'titik penjemputan terbaik untuk perjalanan berdasarkan cara untuk memintal layanan taksi', 'Wilayah di kota ini yang menjadi tujuan paling umum di hari Senin','titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi','Jalan yang memiliki lalu lintas lebih padat pada jam sibuk']
+        options=['Titik penjemputan terbaik', 'Titik penjemputan terbaik untuk perjalanan berdasarkan cara untuk memintal layanan taksi', 'Wilayah di kota ini yang menjadi tujuan paling umum di hari Senin','Titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi','Jalan yang memiliki lalu lintas lebih padat pada jam sibuk']
     )
 
-if view == 'titik penjemputan terbaik':
+if view == 'Titik penjemputan terbaik':
     tab1, tab2 = st.tabs(["Map Jemput Terbaik", "Rate Order Taksi"])
     with tab1:
         st.write('Wilayah kota mana yang merupakan titik penjemputan terbaik')
@@ -86,7 +86,7 @@ if view == 'titik penjemputan terbaik':
         q1_data = data.CALL_TYPE.value_counts(sort=False)
         st.bar_chart(q1_data)
 
-elif view == 'titik penjemputan terbaik untuk perjalanan berdasarkan cara untuk memintal layanan taksi':
+elif view == 'Titik penjemputan terbaik untuk perjalanan berdasarkan cara untuk memintal layanan taksi':
     st.write('Wilayah kota mana yang merupakan titik penjemputan terbaik untuk perjalanan berdasarkan cara untuk memintal layanan taksi')
     Q3_Map = folium.Map(location=[41.15,-8.62],zoom_start=14)
 
@@ -114,7 +114,7 @@ elif view == 'Wilayah di kota ini yang menjadi tujuan paling umum di hari Senin'
         folium.CircleMarker(location=loc, radius=1, color="red",weight = 2).add_to(Q4_map)
     st_map = st_folium(Q4_map, width=700, height=450)
         
-elif view == 'titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi':
+elif view == 'Titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi':
     st.write('Di mana titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi')
     Q5_map = folium.Map(location=[41.15,-8.62],zoom_start=14)
     put_start_loc = lambda loc : folium.CircleMarker(loc,color="red",radius=1,weight= 2).add_to(Q5_map)
