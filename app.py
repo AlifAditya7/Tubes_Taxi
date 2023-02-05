@@ -70,7 +70,7 @@ with st.sidebar:
     view = st.selectbox(
         "What\'s View Would You See?",
         key="view",
-        options=['Titik Jemput', 'Titik Jemput dgn Indeks Layanan', 'Terpadat di Hari Senin','Terpadat Awal Akhir di Hari Senin','Rute Terpadat Pada Jam Sibuk']
+        options=['Titik Jemput', 'Titik Jemput dgn Indeks Layanan', 'Terpadat di Hari Senin','Terpadat di Hari Senin Jam 6 Sampai Jam 9','Rute Terpadat Pada Jam Sibuk']
     )
 
 if view == 'Titik Jemput':
@@ -114,7 +114,7 @@ elif view == 'Terpadat di Hari Senin':
         folium.CircleMarker(location=loc, radius=1, color="red",weight = 2).add_to(Q4_map)
     st_map = st_folium(Q4_map, width=700, height=450)
         
-elif view == 'Terpadat Awal Akhir di Hari Senin':
+elif view == 'Terpadat di Hari Senin Jam 6 Sampai Jam 9':
     st.write('Di mana titik awal dan akhir yang paling umum pada Senin Pagi dari jam 6 pagi sampai jam 9 pagi')
     Q5_map = folium.Map(location=[41.15,-8.62],zoom_start=14)
     put_start_loc = lambda loc : folium.CircleMarker(loc,color="red",radius=1,weight= 2).add_to(Q5_map)
